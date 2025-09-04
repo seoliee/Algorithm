@@ -15,14 +15,12 @@ public class Main {
 
         for(int i = 0; i < 10; i++) {
             if(arr[i] >= 250) {
-                double avg = (double)sum / cnt;
-                double roundedAvg = Math.round(avg * 10.0) / 10.0;
-                
-                System.out.println(sum + " " + roundedAvg);
                 break;
             }
             sum += arr[i];
             cnt++;
         }
+        double avg = (double) sum/cnt;
+        System.out.printf("%d %.1f", sum, avg);
     }
 }
