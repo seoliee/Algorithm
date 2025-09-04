@@ -14,14 +14,14 @@ public class Main {
         for(int i = 0; i < N; i++) {
             int sum = 0;
             for(int j = 0; j < 4; j++) {
-                testResult[i] = sc.nextInt();
+                testResult[j] = sc.nextInt();
                 sum += testResult[j];
             }  // 학생 하나의 시험결과 배열, 합 받음
 
             avg = sum / 4;
             if(avg >= 60) {
-                System.out.println("pass");
                 cnt++;
+                System.out.println("pass");
             } else {
                 System.out.println("fail");
             }
