@@ -12,29 +12,21 @@ public class Main {
         int cnt = 0;
 
         for(int i = 0; i < N; i++) {
-            int sum = 0;   
+            int sum = 0;
             for(int j = 0; j < 4; j++) {
                 testResult[i] = sc.nextInt();
-                sum += testResult[i];
-            }
+                sum += testResult[j];
+            }  // 학생 하나의 시험결과 배열, 합 받음
 
             avg = sum / 4;
-
             if(avg >= 60) {
                 System.out.println("pass");
                 cnt++;
-            } else 
+            } else {
                 System.out.println("fail");
-
-
+            }
         }
-
-
         System.out.println(cnt);
-
-
-
-
 
     }
 }
