@@ -1,0 +1,32 @@
+package 백준.수열2559;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Solution {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		File file = new File("./src/백준/수열2559/input.txt");
+		Scanner sc = new Scanner(file);
+		
+		int N = sc.nextInt();  // 온도 측정한 날짜
+		int K = sc.nextInt();  // 합을 구하기 위한 연속적인 날짜의 수
+		
+		int[] arr = new int[N];
+		for(int i = 0; i < N; i++) {
+			arr[i] = sc.nextInt();
+		}
+		
+		int max = -100;
+		int 
+		for(int i = 0; i < K; i++) {
+			sum
+		}
+		
+		System.out.println(max);
+		
+
+	}
+
+}

@@ -1,0 +1,27 @@
+package 백준.알파벳찾기10809;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		
+		// 'a' = 97
+		Scanner sc = new Scanner(System.in);
+		
+		String inp = sc.next();
+		char[] inpChar = inp.toCharArray();
+		int len = inpChar.length;
+		
+		int[] alphabet = new int[26];
+		
+		for(int i = 0; i < len; i++) {
+			int num = inpChar[i] - 97;
+			alphabet[num]++;
+		}
+		
+		for(int i = 0; i < 26; i++) {
+			System.out.print(alphabet[i] + " ");
+		}
+		
+	}
+}

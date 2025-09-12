@@ -1,0 +1,57 @@
+package 백준.N과M2_15650;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+	static int N, M;
+	static int[] arr;  // 1~N 수 저장한 배열
+	static boolean[] visited;  // 방문 체크 저장하는 배열
+	static List<Integer> result = new ArrayList<>();  // 결과 배열
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		N = sc.nextInt();
+		M = sc.nextInt();
+		
+		arr = new int[N];
+		visited = new boolean[N];
+		
+		// arr에 1~N 수 저장
+		for(int i = 0; i < N; i++) {
+			arr[i] = i+1;
+		}
+		
+		
+		perm(0);
+		
+	}
+	
+	public static void perm(int idx) {
+		// 종료 조건
+		if(idx == M) {
+			for(int i = 0; i < M; i++) {
+				System.out.print(result.get(i) + " ");
+			}
+			System.out.println();
+			return;
+		}
+		
+		// 재귀 파트
+		for(int i = 0; i < M; i++) {
+			if(!visited[i]) {  // 방문하지 않은 경우
+				result.add(i+1);  // 결과 배열에 추가
+				visited[i] = true;  // 방문했다고 체크
+				
+				perm(i+1);
+				
+				result.remove(i+1);  // 결과 배열에서 없애
+				visited[i] = false;  // 방문 해제
+			}
+			
+		}
+	}
+
+}

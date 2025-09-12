@@ -1,0 +1,85 @@
+package SWEA.러시아국기같은깃발_4613;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Solution {
+	static int[] rows;
+	
+	public static void main(String[] args) throws FileNotFoundException {
+		File file = new File("./src/SWEA/러시아국기같은깃발_4613/input.txt");
+		Scanner sc = new Scanner(file);
+		
+		// 테스트케이스
+		int T = sc.nextInt();
+		
+		// 테스트케이스만큼 반복 시작
+		for(int tc = 1; tc <= T; tc++) {
+			int N = sc.nextInt();
+			int M = sc.nextInt();
+			
+			// 깃발 입력받기
+			char[][] flag = new char[N][M];
+			for(int i = 0; i < N; i++) {
+				flag[i] = sc.next().toCharArray();
+			}
+			
+			// row 하나에서 새로 칠해야 하는 칸의 수
+			int[] notW = new int[N];
+			int[] notB = new int[N];
+			int[] notR = new int[N];
+			
+			for(int row = 0; row < N; row++) {
+				int w = 0;
+				int b = 0;
+				int r = 0;
+				
+				for(int col = 0; col < M; col++) {
+					char color = flag[row][col];
+					if(color != 'W') w++;
+					if(color != 'B') b++;
+					if(color != 'R') r++;
+				}
+				notW[row] = w;
+				notB[row] = b;
+				notR[row] = r;
+			}
+			
+			// 각 행의 누적합
+			int[] sumW = new int[N+1];
+			int[] sumB = new int[N+1];
+			int[] sumR = new int[N+1];
+			for(int i = 0; i < N; i++) {
+				sumW[i+1] = sumW[i] + notW[i];
+				sumB[i+1] = sumB[i] + notB[i];
+				sumR[i+1] = sumR[i] + notR[i];
+			}
+			
+			// 칠해야 하는 최소값 (결과)
+			int result = Integer.MAX_VALUE;
+			
+			// endW: 마지막 하얀색 줄
+			// endB: 마지막 파란색 줄
+			for(int endW = 0; endW <= N-3; endW++) {  // 0번째 row <= 마지막 하얀색 줄 <= N-3번째 row
+				for(int endB = endW+1; endB < N-2; endB++) {  // 마지막 하얀색 줄+1 <= 마지막 파란색 줄 <= N-2번째 row
+					int white = sumW[endW+1];  // 0번째줄 ~ endW번째 줄까지 하얀색으로 칠해
+					int blue = sumB[endB+1] - sumW[endW+1];  // endW+1번째줄 ~ endB번째 줄까지 파란색으로 칠해
+					int red = sumR[N] - sumR[endB+1];  // endB+1번째 줄 ~ 마지막까지 빨간색으로 칠해
+					
+					int cnt = white+blue+red;  // 전체 깃발에서 새로 칠해야 하는 칸 개수
+					if(cnt < result) result = cnt;
+				}
+			}
+			
+			System.out.println("#" + tc + " " + result);
+			
+		}  // 테스트케이스만큼 반복 끝
+		
+		
+		
+
+	}
+
+
+}
