@@ -1,0 +1,27 @@
+package 백준.문자열반복2675;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int T = sc.nextInt();
+		
+		for(int tc = 1; tc <= T; tc++) {
+			int R = sc.nextInt();
+			String inp = sc.next();
+			int len = inp.length();
+			
+			char[] inpArr = inp.toCharArray();
+			for(int i = 0; i < len; i++) {
+				for(int j = 0; j < R; j++) {
+					System.out.print(inpArr[i]);
+				}
+			}			
+			System.out.println();
+		}
+
+	}
+}

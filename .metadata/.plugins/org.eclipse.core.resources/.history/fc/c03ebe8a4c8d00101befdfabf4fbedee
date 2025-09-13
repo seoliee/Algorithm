@@ -1,0 +1,72 @@
+package 트리만들기;
+
+import java.util.Arrays;
+
+public class ArrayTree {
+
+	static String[] tree;  // 트리 배열
+	static int lastIndex;  // 트리에 마지막으로 추가된 노드의 인덱스
+	
+	public void ArrayTree(int size) {
+		tree = new String[size];
+		lastIndex = -1;  // 초기에는 노드가 없으므로 -1로 설정
+	}
+	
+	public void addNode(String data) {
+		if(lastIndex + 1 < tree.length) {  // 트리에 자리가 있을 때
+			lastIndex++;
+			tree[lastIndex] = data;  // tree의 마지막 인덱스에 데이터 추가
+		} else {
+			System.out.println("트리 꽉 찼슨. 노드 추가 안됨여");
+		}
+	}
+	
+	public int getParentIndex(int index) {
+		if(index > 0 && index <= lastIndex) {  // 부모 노드 인덱스를 구하려는 인덱스가 0보다 크고 마지막 인덱스보다 작아야 함
+			return (index - 1) / 2;
+		} else
+			return -1;  // 부모 노드 인덱스 없으면 -1 반환
+	}
+	
+	public int getLeftChildIndex(int index) {
+		int leftChildIndex = index * 2 + 1;
+		if(leftChildIndex <= lastIndex) {  // 왼쪽 자식 인덱스가 마지막 인덱스보다 작으면
+			return leftChildIndex;  // 왼쪽 자식 인덱스 반환
+		} else
+			return -1;  // 없으면 -1 반환
+	}
+	
+	public int getRightChildIndex(int index) {
+		int rightChildIndex = index * 2 + 2;
+		if(rightChildIndex <= lastIndex) {
+			return rightChildIndex;
+		} else
+			return -1;
+	}
+	
+	public void printTree() {
+		System.out.println("트리 배열: " + Arrays.toString(tree));
+	}
+	public static void main(String[] args) {
+		ArrayTree tree = new ArrayTree(10);
+		
+		tree.addNode("A");
+		tree.addNode("B");
+		tree.addNode("C");
+		tree.addNode("D");
+		tree.addNode("E");
+		tree.addNode("F");
+		
+		System.out.println("\n--------------------");
+        System.out.println("인덱스 1 (B)의 부모: " + tree.getParentIndex(1));
+        System.out.println("인덱스 2 (C)의 부모: " + tree.getParentIndex(2));
+        System.out.println("인덱스 1 (B)의 왼쪽 자식: " + tree.getLeftChildIndex(1));
+        System.out.println("인덱스 1 (B)의 오른쪽 자식: " + tree.getRightChildIndex(1));
+        System.out.println("--------------------");
+
+        tree.printTree();
+		
+
+	}
+
+}

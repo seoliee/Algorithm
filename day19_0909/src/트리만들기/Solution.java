@@ -1,0 +1,34 @@
+package 트리만들기;
+
+import java.util.Scanner;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		// 노드 개수
+		int N = sc.nextInt();  // 노드 개수 입력받음
+		int[] nodes = new int[N];  // 노드 저장할 배열 생성
+		for (int i = 0; i < N; i++) {
+			nodes[i] = sc.nextInt();
+		}  // 노드 입력받음
+		
+		// 트리 배열 크기 구하기
+		int level = 0;
+		while ((1 << level) - 1 < N) level++;
+		int[] tree = new int[1 << (level + 1)];
+		
+		// 트리에 그대로 채워 넣기
+		for (int i = 0; i < N; i++) {
+			tree[i + 1] = nodes[i];  // index 1부터 채움
+		}
+		
+		// 출력
+		for (int i = 1; i < tree.length; i++) {
+			System.out.print(tree[i] + " ");
+		}
+	}
+		
+}
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;day22_0912/src/SWEA/러시아국기같은깃발_4613/sample_input (6).txt&apos; to &apos;input.txt&apos;" description="Rename resource &apos;sample_input (6).txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/SWEA/러시아국기같은깃발_4613/sample_input (6).txt" name="input.txt" stamp="1757632686595" updateReferences="true"/>
+</session>
